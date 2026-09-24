@@ -1,0 +1,134 @@
+/* ================= Sticky Voice Recorder Button ================= */
+
+.voice-recorder-container {
+  position: fixed;
+  bottom: 65px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  pointer-events: auto;
+}
+
+/* Floating Action Button */
+.voice-recorder-btn {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+  transition: background 0.3s ease, transform 0.25s ease, box-shadow 0.3s ease;
+  position: relative;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.voice-recorder-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(37, 99, 235, 0.55);
+}
+
+.voice-recorder-btn:active {
+  transform: scale(0.96);
+}
+
+/* Active Recording State */
+.voice-recorder-btn.recording {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  box-shadow: 0 8px 25px rgba(239, 68, 68, 0.5);
+  animation: recorder-pulse 1.8s infinite;
+}
+
+.voice-recorder-btn.recording:hover {
+  box-shadow: 0 12px 30px rgba(239, 68, 68, 0.65);
+}
+
+/* Pulsing Outer Ring Animation */
+@keyframes recorder-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7), 0 8px 25px rgba(239, 68, 68, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(239, 68, 68, 0), 0 8px 25px rgba(239, 68, 68, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0), 0 8px 25px rgba(239, 68, 68, 0.4);
+  }
+}
+
+/* Running Timer Pill */
+.voice-recorder-timer {
+  background: #0f172a;
+  color: #ffffff;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.5px;
+  animation: timer-fade-in 0.25s ease-out;
+  white-space: nowrap;
+}
+
+@keyframes timer-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.voice-recorder-blink-dot {
+  width: 9px;
+  height: 9px;
+  background: #ef4444;
+  border-radius: 50%;
+  animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+  from { opacity: 1; }
+  to { opacity: 0.2; }
+}
+
+/* Spinner during upload */
+.recorder-spinner {
+  animation: spin 0.8s linear infinite;
+  font-size: 22px;
+}
+
+/* Breakpoint 480px: slightly more compact */
+@media (max-width: 480px) {
+  .voice-recorder-container {
+    bottom: 56px;
+    right: 14px;
+    gap: 8px;
+  }
+
+  .voice-recorder-btn {
+    width: 52px;
+    height: 52px;
+    font-size: 20px;
+  }
+
+  .voice-recorder-timer {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+}

@@ -1,0 +1,59 @@
+/* ================= Navbar Specific Styling ================= */
+
+.navbar-brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sidebar-toggle-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.sidebar-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.navbar-right-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Breakpoint 1024px: Show sidebar drawer toggle */
+@media (max-width: 1024px) {
+  .sidebar-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Breakpoint 768px: Enable dropdown navbar menu */
+@media (max-width: 768px) {
+  .navbar-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* Breakpoint 480px: Compact header */
+@media (max-width: 480px) {
+  .navbar-brand-wrap {
+    gap: 8px;
+  }
+
+  .sidebar-toggle-btn {
+    font-size: 18px;
+    padding: 6px;
+  }
+}
