@@ -1,4 +1,4 @@
-import api from "./api";
+import api, { getBaseURL } from "./api";
 
 export const getRecordings = async () => {
   const response = await api.get("/recordings");
@@ -20,7 +20,7 @@ export const deleteRecording = async (id) => {
 };
 
 export const getAudioStreamUrl = (id) => {
-  const baseURL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+  const baseURL = getBaseURL();
   const token = localStorage.getItem("token");
   return `${baseURL}/recordings/${id}${token ? `?token=${encodeURIComponent(token)}` : ""}`;
 };

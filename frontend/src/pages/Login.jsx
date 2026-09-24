@@ -46,7 +46,11 @@ function Login() {
       toast.success("Welcome back! Logged in successfully.");
       navigate("/dashboard");
     } catch (err) {
-      const message = err?.message || "Invalid email or password";
+      const message =
+        err?.response?.data?.message ||
+        err?.message ||
+        (typeof err === "string" ? err : "") ||
+        "Invalid email or password";
       setError(message);
       toast.error(message);
     } finally {

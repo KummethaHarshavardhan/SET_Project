@@ -60,7 +60,11 @@ function Register() {
       toast.success("Account created successfully!");
       navigate("/dashboard");
     } catch (err) {
-      const message = err?.message || "Registration failed";
+      const message =
+        err?.response?.data?.message ||
+        err?.message ||
+        (typeof err === "string" ? err : "") ||
+        "Registration failed";
       setError(message);
       toast.error(message);
     } finally {
